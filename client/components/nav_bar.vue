@@ -35,10 +35,17 @@
 
 <style scoped>
 .nav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 100px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Apply blur */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: add a border */
+    position: sticky; /* Make the navigation bar sticky */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure the navigation bar is above other elements */
 }
 
 .logo {
