@@ -6,10 +6,19 @@
 					SpaceX
 				</h3>
 			</div>
-			<div>
-				<NuxtLink :to="{ path: '/rocket' }" class="nav-link">Rockets</NuxtLink>
-				<NuxtLink :to="{ path: '/launches' }" class="nav-link">Launches</NuxtLink>
-				<NuxtLink :to="{ path: '/favorite' }" class="nav-link">Favorite</NuxtLink>
+			<div class="nav-links">
+				<div class="nav-link">
+					<v-icon icon="mdi-rocket" class="icon" />
+					<NuxtLink :to="{ path: '/rocket' }" class="link-text">Rockets</NuxtLink>
+				</div>
+				<div class="nav-link">
+					<v-icon icon="mdi-rocket-launch" class="icon" />
+					<NuxtLink :to="{ path: '/launches' }"  class="link-text">Launches</NuxtLink>
+				</div>
+				<div class="nav-link">
+					<v-icon icon="mdi-star" class="icon" />
+					<NuxtLink :to="{ path: '/favorite' }"  class="link-text">Favorite</NuxtLink>
+				</div>
 			</div>
 
 		</div>
@@ -32,11 +41,21 @@
 .nav-link {
 	border-radius: 5px;
 	padding: 10px;
-	border: 2px solid black;
-	margin-left: 20px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.link-text{
 	text-decoration: none;
 	color: black;
-	font-weight: bold;
+
+}
+
+.nav-links {
+	display: flex;
+	gap: 20px;
 }
 
 .logo-text {
@@ -45,13 +64,28 @@
 }
 
 .icon{
-    font-size: 40px;
+    font-size: 30px;
     color: black;
 }
 
 .nav-link:hover {
     transition: background-color 0.5s ease, color 0.5s ease;
-	background-color: black;
-	color: white;
+	background-color: grey;
+	opacity: 0.8;
+}
+
+
+@media (max-width: 768px) {
+	.nav {
+		flex-direction: column;
+	}
+	
+	.logo {
+		margin-bottom: 20px;
+	}
+
+	.link-text{
+		display: none;
+	}
 }
 </style>
