@@ -2,9 +2,11 @@
     <div class="nav">
 			<div class="logo">
 				<v-icon icon="mdi-vuetify" class="icon" />
-				<h3 class="logo-text">
+				<NuxtLink :to="{ path: '/' }"  class="link-text">
+					<h3 class="logo-text">
 					SpaceX
-				</h3>
+				</h3></NuxtLink>
+				
 			</div>
 			<div class="nav-links">
 				<div class="nav-link">
