@@ -7,7 +7,7 @@
 			</h2>
 		</div>
 
-		<v-card class="mx-auto md:my-12 p-5">
+		<v-card class="card">
 			<v-card-text class="large-text">
 				Explore the vastness of space with our Space Explorer app. Discover fascinating celestial bodies, learn
 				about astronomical events, and stay updated with the latest discoveries in the universe.
@@ -70,6 +70,11 @@ const prevSlide = () => {
 	font-size: xx-large;
 }
 
+.card{
+	margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .subheader {
 	display: flex;
 	align-items: start;
@@ -84,7 +89,7 @@ const prevSlide = () => {
 }
 
 .large-text {
-	font-size: 1.5em;
+	font-size: 1.4em;
 	line-height: 50px !important;
 }
 
