@@ -44,6 +44,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+useHead({
+	title: 'NuxtVGP - SpaceX',
+})
+
 const query = gql`
 query Launches {
   launches {
@@ -75,30 +79,39 @@ const { data } = useAsyncQuery<{
 	}[]
 }>(query)
 
+//Get the favorite store
 const favorite = favoriteStore()
 
+//Get the launches
 const launches = computed(() => data.value?.launches ?? [])
 
-const itemsPerPage = ref(10); // Number of items per page
+//Pagination
+const itemsPerPage = ref(10); 
 const currentPage = ref(1); // Current page
 
+//Sort and filter
 const selectedSort = ref('Acending')
 
+//Get the total number of pages
 const totalPages = computed(() => Math.ceil(launches.value.length / itemsPerPage.value)); // Total number of pages
 
+//Get the paginated launches
 const paginatedLaunches = computed(() => {
 	const start = (currentPage.value - 1) * itemsPerPage.value;
 	const end = start + itemsPerPage.value;
 	return filteredAndSortedLaunches.value.slice(start, end);
 });
 
+//Get the years
 let years = computed(() => {
 	let launchYears = launches.value.map((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear())
 	return ['All', ...new Set(launchYears)]
 })
 
+//Selected year
 var selectedYear = ref(years.value[0]);
 
+//Toggle favorite
 const toggleFavorite = (missionName: string) => {
   if (isFavorite(missionName)) {
     favorite.removeFromFavorites(missionName);
@@ -107,10 +120,12 @@ const toggleFavorite = (missionName: string) => {
   }
 };
 
+//Check if the mission is favorite
 const isFavorite = (missionName: string) => {
   return favorite.favorites.includes(missionName);
 };
 
+//Filter and sort the launches
 const filteredAndSortedLaunches = computed(() => {
   var result = [...launches.value];
   if (selectedYear.value !== 'All') {

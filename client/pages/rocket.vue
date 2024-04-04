@@ -75,14 +75,17 @@ const { data } = useAsyncQuery<{
 	}[]
 }>(query)
 
+// Extract the rockets from the data
 const rockets = computed(() => data.value?.rockets ?? [])
 
-const itemsPerPage = ref(10); // Number of items per page
-const currentPage = ref(1); // Current page
+// Pagination
+const itemsPerPage = ref(10); 
+const currentPage = ref(1); 
 
-
+// Sorting
 let selectedSort = ref('Ascending')
 
+// Sort the rockets by first flight date
 const sortedRockets = computed(() => {
 	let sorted = [...rockets.value]
 	sorted.sort((a, b) => new Date(a.first_flight).getTime() - new Date(b.first_flight).getTime())
@@ -92,8 +95,10 @@ const sortedRockets = computed(() => {
 	return sorted
 })
 
-const totalPages = computed(() => Math.ceil(rockets.value.length / itemsPerPage.value)); // Total number of pages
+// Total number of pages
+const totalPages = computed(() => Math.ceil(rockets.value.length / itemsPerPage.value)); 
 
+// Paginated rockets
 const paginatedLaunches = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value;
   const end = start + itemsPerPage.value;

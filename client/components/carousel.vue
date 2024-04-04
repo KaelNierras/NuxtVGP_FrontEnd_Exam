@@ -41,7 +41,7 @@ const prevSlide = () => {
 .slides {
 	display: flex;
 	overflow: hidden;
-	width: 100%;
+	width: 1000px;
 	height: 100%;
 	border-radius: 30px;
 
@@ -61,6 +61,32 @@ const prevSlide = () => {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+
+}
+
+.icon {
+	font-size: 50px;
+	color: black;
+	margin-left: 30px;
+	margin-right: 30px;
+
+}
+
+@media (max-width: 1270px) {
+    .slides{
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+	.icon {
+		font-size: 25px;
+		margin-left: 10px;
+		margin-right: 10px;
+
+    }
 
 }
 </style>

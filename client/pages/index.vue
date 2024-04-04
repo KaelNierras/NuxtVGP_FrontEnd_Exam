@@ -13,24 +13,20 @@
 		<div class="card">
 			<v-card>
 				<v-card-text class="large-text bordered-text">
-					Explore the vastness of space with our Space Explorer Site. Discover fascinating celestial bodies,
-					learn
-					about astronomical events, and stay updated with the latest discoveries in the universe.
+					{{text}}
 				</v-card-text>
 			</v-card>
 		</div>
-
-
 		<div class="c-container">
 			<Carousel/>
-		
 		</div>
 	</v-container>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import Carousel from '../components/carousel.vue';
+
+const text = ref('SpaceX is a private aerospace manufacturer and space transportation company founded by Elon Musk in 2002. The company has developed the Falcon 1, Falcon 9, Falcon Heavy, and Starship rockets, and the Dragon spacecraft.');
 
 useHead({
 	title: 'NuxtVGP - SpaceX',
@@ -50,9 +46,7 @@ useHead({
 
 .bordered-text {
 	border-left: 5px solid #000;
-	/* Adjust color and thickness as needed */
 	padding-left: 20px;
-	/* Adjust padding as needed */
 }
 
 .header-sub {
@@ -83,26 +77,16 @@ useHead({
 	justify-content: center;
 }
 
-.icon {
-	font-size: 50px;
-	color: black;
-	margin-left: 30px;
-	margin-right: 30px;
-
+@media (max-width: 1270px) {
+    .card{
+		padding: 0px 50px;
+	}
 }
-
 
 @media (max-width: 768px) {
 	.carousel {
 		width: 100%;
 		height: 400px;
-	}
-
-	.icon {
-		font-size: 25px;
-		margin-left: 10px;
-		margin-right: 10px;
-
 	}
 
 	.large-text {
