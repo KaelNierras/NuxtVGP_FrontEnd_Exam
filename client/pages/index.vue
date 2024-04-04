@@ -7,18 +7,18 @@
 			</h2>
 		</div>
 
-		<v-card class="mx-auto my-12 p-5">
+		<v-card class="mx-auto md:my-12 p-5">
 			<v-card-text class="large-text">
 				Explore the vastness of space with our Space Explorer app. Discover fascinating celestial bodies, learn
 				about astronomical events, and stay updated with the latest discoveries in the universe.
 			</v-card-text>
 		</v-card>
 
-		<div>
-			<h3 class="my-5">
+		<div class="subheading">
+			<h3 class="subheader">
 				Discover the Universe
 			</h3>
-			<p>
+			<p class="large-text">
 				Explore the universe with our Space Explorer app. Discover fascinating celestial bodies, learn about
 				astronomical events, and stay updated with the latest discoveries in the universe.
 			</p>
@@ -70,9 +70,21 @@ const prevSlide = () => {
 	font-size: xx-large;
 }
 
+.subheader {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	font-size: x-large;
+}
+
+.subheading {
+	padding: 30px 16px;
+}
+
 .large-text {
 	font-size: 1.5em;
-	/* Adjust this value to your liking */
 	line-height: 50px !important;
 }
 
@@ -97,41 +109,41 @@ const prevSlide = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 90%; /* Static width */
-	height: 650px; /* Static height */
+	width: 90%; 
+	height: 650px; 
 }
 
 .slides {
 	display: flex;
 	overflow: hidden;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
+	width: 100%; 
+	height: 100%; 
 	border-radius: 30px;
 
 }
 
 .slides div {
-	display: none; /* Hide all slides */
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
+	display: none; 
+	width: 100%; 
+	height: 100%; 
 }
 
 .slides .active {
-	display: flex; /* Show active slide */
+	display: flex; 
 }
 
 .image {
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	object-fit: cover; /* Resize the image to cover the container while maintaining its aspect ratio */
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover; 
 	
 }
 
 
 @media (max-width: 768px) {
 	.carousel {
-	width: 100%; /* Static width */
-	height: 400px; /* Static height */
+	width: 100%; 
+	height: 400px;
 }
 .icon{
 	font-size: 25px;
@@ -139,5 +151,19 @@ const prevSlide = () => {
 	margin-right: 10px;
 
 }
+
+.large-text {
+	font-size: 1.2em;
+}
+
+.header{
+	font-size: x-large;
+	text-align: center;
+}
+
+.subheading {
+	padding: 20px 16px;
+}
+
 }
 </style>
