@@ -22,11 +22,12 @@
 
 .icon {
     font-size: 20px;
+    color: white;
+    margin: 0px 10px;
 }
 
 .mini-logo {
     display: flex;
-    gap: 10px;
     align-items: center;
     justify-content: center;
 }
@@ -35,7 +36,7 @@
     height: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center; /* This will center items vertically */
+    align-items: center; 
 }
 
 @media (max-width: 768px) {
