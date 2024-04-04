@@ -34,6 +34,10 @@
 
 <script setup lang="ts">
 
+useHead({
+	title: 'NuxtVGP - SpaceX',
+})
+
 const query = gql`
 query Rockets {
 	rockets {
