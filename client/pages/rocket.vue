@@ -1,5 +1,4 @@
 <template>
-	<Navigation/>
 	<v-container>
 		<h3 class="my-5">
 			SpaceX Rockets
@@ -33,7 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import Navigation from '../components/nav_bar.vue'
 const query = gql`
 query Rockets {
 	rockets {
