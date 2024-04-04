@@ -6,7 +6,7 @@
 				Welcome to
 			</h2>
 			<h1 class="header-sub">
-				SpanceX
+				SpaceX
 			</h1>
 		</div>
 
