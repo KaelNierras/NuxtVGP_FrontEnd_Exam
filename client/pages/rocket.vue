@@ -17,7 +17,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="rocket in sortedRockets" :key="rocket.name">
+				<tr v-for="rocket in paginatedLaunches" :key="rocket.name">
 					<td>{{ rocket.name }}</td>
 					<td>{{ rocket.description }}</td>
 					<td>{{ rocket.first_flight }}</td>
@@ -28,6 +28,7 @@
 				</tr>
 			</tbody>
 		</v-table>
+		<v-pagination v-model="currentPage" :length="totalPages" />
 	</v-container>
 </template>
 
@@ -71,6 +72,10 @@ const { data } = useAsyncQuery<{
 
 const rockets = computed(() => data.value?.rockets ?? [])
 
+const itemsPerPage = ref(10); // Number of items per page
+const currentPage = ref(1); // Current page
+
+
 let selectedSort = ref('Ascending')
 
 const sortedRockets = computed(() => {
@@ -81,6 +86,14 @@ const sortedRockets = computed(() => {
 	}
 	return sorted
 })
+
+const totalPages = computed(() => Math.ceil(rockets.value.length / itemsPerPage.value)); // Total number of pages
+
+const paginatedLaunches = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  const end = start + itemsPerPage.value;
+  return sortedRockets.value.slice(start, end);
+});
 
 </script>
 

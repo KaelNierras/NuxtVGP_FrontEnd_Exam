@@ -17,7 +17,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="launch in filteredAndSortedLaunches" :key="launch.id">
+				<tr v-for="launch in paginatedLaunches" :key="launch.id">
 					<td>{{ launch.mission_name }}</td>
 					<td>{{ launch.rocket.rocket_name }}</td>
 					<td>{{ launch.launch_date_local }}</td>
@@ -27,6 +27,7 @@
 				</tr>
 			</tbody>
 		</v-table>
+		<v-pagination v-model="currentPage" :length="totalPages" />
 	</v-container>
 </template>
 
@@ -66,7 +67,18 @@ const favorite = favoriteStore()
 
 const launches = computed(() => data.value?.launches ?? [])
 
+const itemsPerPage = ref(10); // Number of items per page
+const currentPage = ref(1); // Current page
+
 const selectedSort = ref('Acending')
+
+const totalPages = computed(() => Math.ceil(launches.value.length / itemsPerPage.value)); // Total number of pages
+
+const paginatedLaunches = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  const end = start + itemsPerPage.value;
+  return filteredAndSortedLaunches.value.slice(start, end);
+});
 
 let years = computed(() => {
     let launchYears = launches.value.map((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear())
@@ -94,5 +106,9 @@ const filteredAndSortedLaunches = computed(() => {
 <style scoped>
 .details-column {
 	max-width: 600px;
+}
+
+.icon {
+	cursor: pointer;
 }
 </style>

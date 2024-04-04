@@ -25,7 +25,7 @@
 			<div class="nav-link">
 				<NuxtLink :to="{ path: '/favorite' }">				<v-icon icon="mdi-star" class="icon" />
 </NuxtLink>
-				<NuxtLink :to="{ path: '/favorite' }" class="link-text">Favorite</NuxtLink>
+				<NuxtLink :to="{ path: '/favorite' }" class="link-text">Favorites</NuxtLink>
 			</div>
 		</div>
 
@@ -84,8 +84,8 @@
 
 .nav-link:hover {
 	transition: background-color 0.5s ease, color 0.5s ease;
-	background-color: grey;
-	opacity: 0.8;
+	background-color: rgba(0, 0, 0, 0.103);
+	cursor: pointer;
 }
 
 

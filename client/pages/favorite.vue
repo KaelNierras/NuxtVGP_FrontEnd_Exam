@@ -16,7 +16,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="launch in filteredLaunches" :key="launch.id">
+				<tr v-for="launch in paginatedFavorites" :key="launch.id">
 					<td>{{ launch.mission_name }}</td>
 					<td>{{ launch.rocket.rocket_name }}</td>
 					<td>{{ launch.launch_date_local }}</td>
@@ -26,7 +26,7 @@
 				</tr>
 			</tbody>
 		</v-table>
-
+		<v-pagination v-model="currentPage" :length="totalPages" />
     </v-container>
 </template>
 
@@ -68,8 +68,19 @@ const { data } = useAsyncQuery<{
 
 const launches = computed(() => data.value?.launches ?? [])
 
+const itemsPerPage = ref(10); // Number of items per page
+const currentPage = ref(1); // Current page
+
 const filteredLaunches = computed(() => {
     return launches.value.filter(launch => favorite.favorites.includes(launch.mission_name));
+});
+
+const totalPages = computed(() => Math.ceil(launches.value.length / itemsPerPage.value)); // Total number of pages
+
+const paginatedFavorites = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  const end = start + itemsPerPage.value;
+  return filteredLaunches.value.slice(start, end);
 });
 
 
@@ -80,8 +91,8 @@ const filteredLaunches = computed(() => {
 	max-width: 600px;
 }
 
-.favorite {
-    cursor: pointer;
+.icon{
+	cursor: pointer;
 }
 
 </style>

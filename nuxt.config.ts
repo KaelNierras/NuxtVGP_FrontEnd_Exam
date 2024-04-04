@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [vuetify()],
 	},
-	modules: ['@nuxtjs/apollo', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }]],
+	modules: ['@nuxtjs/apollo', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'],
+ }]],
 	
 })
