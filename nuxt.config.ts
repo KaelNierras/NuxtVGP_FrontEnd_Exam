@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 	},
 	modules: ['@nuxtjs/apollo', ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'],
 	router: {
-		middleware: ['redirect'],
+		middleware: ['launches'],
 	  },
 
  }]],
