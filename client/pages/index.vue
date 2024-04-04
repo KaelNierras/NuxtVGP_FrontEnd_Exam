@@ -3,40 +3,37 @@
 		<div class="header">
 			<v-icon icon="mdi-vuetify" />
 			<h2>
-				Welcome to the Space Explorer
+				Welcome to
 			</h2>
+			<h1 class="header-sub">
+				SpanceX
+			</h1>
 		</div>
 
-		<v-card class="card">
-			<v-card-text class="large-text">
-				Explore the vastness of space with our Space Explorer app. Discover fascinating celestial bodies, learn
-				about astronomical events, and stay updated with the latest discoveries in the universe.
-			</v-card-text>
-		</v-card>
-
-		<div class="subheading">
-			<h3 class="subheader">
-				Discover the Universe
-			</h3>
-			<p class="large-text">
-				Explore the universe with our Space Explorer app. Discover fascinating celestial bodies, learn about
-				astronomical events, and stay updated with the latest discoveries in the universe.
-			</p>
+		<div class="card">
+			<v-card>
+				<v-card-text class="large-text bordered-text">
+					Explore the vastness of space with our Space Explorer app. Discover fascinating celestial bodies,
+					learn
+					about astronomical events, and stay updated with the latest discoveries in the universe.
+				</v-card-text>
+			</v-card>
 		</div>
+
 
 		<div class="c-container">
 			<div class="carousel">
-			<button @click="prevSlide"><v-icon icon="mdi-chevron-left" class="icon" /></button>
-			<div class="slides">
-				<div v-for="(slide, index) in slides" :key="index" :class="{ active: index === currentIndex }">
-					<img v-show="index === currentIndex" :src="slide" class="image" alt="Slide image">
+				<button @click="prevSlide"><v-icon icon="mdi-chevron-left" class="icon" /></button>
+				<div class="slides">
+					<div v-for="(slide, index) in slides" :key="index" :class="{ active: index === currentIndex }">
+						<img v-show="index === currentIndex" :src="slide" class="image" alt="Slide image">
+					</div>
 				</div>
+				<button @click="nextSlide"><v-icon icon="mdi-chevron-right" class="icon" /></button>
 			</div>
-			<button @click="nextSlide"><v-icon icon="mdi-chevron-right" class="icon" /></button>
-		</div>
 
 		</div>
-		
+
 
 
 	</v-container>
@@ -70,27 +67,31 @@ const prevSlide = () => {
 	font-size: xx-large;
 }
 
-.card{
+.bordered-text {
+	border-left: 5px solid #000;
+	/* Adjust color and thickness as needed */
+	padding-left: 20px;
+	/* Adjust padding as needed */
+}
+
+.header-sub {
+	margin-top: -80px;
+	font-size: 150px;
+}
+
+.card {
 	margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.subheader {
+	margin-bottom: 30px;
 	display: flex;
-	align-items: start;
-	flex-direction: column;
-	width: 100%;
-	justify-content: center;
-	font-size: x-large;
+	align-items: center;
+	padding: 0px 200px;
 }
 
-.subheading {
-	padding: 30px 16px;
-}
 
 .large-text {
 	font-size: 1.4em;
 	line-height: 50px !important;
+	padding: 0px 100px;
 }
 
 .c-container {
@@ -101,7 +102,7 @@ const prevSlide = () => {
 	justify-content: center;
 }
 
-.icon{
+.icon {
 	font-size: 50px;
 	color: black;
 	margin-left: 30px;
@@ -114,61 +115,77 @@ const prevSlide = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 90%; 
-	height: 650px; 
+	width: 90%;
+	height: 650px;
 }
 
 .slides {
 	display: flex;
 	overflow: hidden;
-	width: 100%; 
-	height: 100%; 
+	width: 100%;
+	height: 100%;
 	border-radius: 30px;
 
 }
 
 .slides div {
-	display: none; 
-	width: 100%; 
-	height: 100%; 
+	display: none;
+	width: 100%;
+	height: 100%;
 }
 
 .slides .active {
-	display: flex; 
+	display: flex;
 }
 
 .image {
-	width: 100%; 
-	height: 100%; 
-	object-fit: cover; 
-	
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
 }
 
 
 @media (max-width: 768px) {
 	.carousel {
-	width: 100%; 
-	height: 400px;
-}
-.icon{
-	font-size: 25px;
-	margin-left: 10px;
-	margin-right: 10px;
+		width: 100%;
+		height: 400px;
+	}
 
-}
+	.icon {
+		font-size: 25px;
+		margin-left: 10px;
+		margin-right: 10px;
 
-.large-text {
-	font-size: 1.2em;
-}
+	}
 
-.header{
-	font-size: x-large;
-	text-align: center;
-}
+	.large-text {
+		font-size: 1.2em;
+	}
 
-.subheading {
-	padding: 20px 16px;
-}
+	.header {
+		font-size: x-large;
+		text-align: center;
+	}
+
+	.header-sub {
+		margin-top: -40px;
+		font-size: 80px;
+	}
+
+	.card {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		display: flex;
+		align-items: center;
+		padding: 0px 40px;
+	}
+
+	.large-text {
+		font-size: 1.4em;
+		line-height: 50px !important;
+		padding: 0px 50px;
+	}
 
 }
 </style>
