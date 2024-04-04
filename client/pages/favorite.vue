@@ -72,7 +72,8 @@ const itemsPerPage = ref(10); // Number of items per page
 const currentPage = ref(1); // Current page
 
 const filteredLaunches = computed(() => {
-    return launches.value.filter(launch => favorite.favorites.includes(launch.mission_name));
+	var result = [...launches.value];
+    return result.filter(launch => favorite.favorites.includes(launch.mission_name));
 });
 
 const totalPages = computed(() => Math.ceil(launches.value.length / itemsPerPage.value)); // Total number of pages

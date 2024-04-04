@@ -2,36 +2,46 @@
 	<v-container>
 		<h3 class="my-5">
 			SpaceX Launches
-		</h3>	
+		</h3>
 		<v-select v-model="selectedSort" :items="['Ascending', 'Descending']" label="Sort by launch date" />
 		<v-select v-model="selectedYear" :items="years" label="Select a year" />
-		<v-table>
-			<thead>
-				<tr>
-					<th class="text-left">Mission Name</th>
-					<th class="text-left">Rocket Name</th>
-					<th class="text-left">Launch Date</th>
-					<th class="text-left">Launch Site</th>
-					<th class="text-left details-column">Details</th>
-					<th class="text-left details-column">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="launch in paginatedLaunches" :key="launch.id">
-					<td>{{ launch.mission_name }}</td>
-					<td>{{ launch.rocket.rocket_name }}</td>
-					<td>{{ launch.launch_date_local }}</td>
-					<td>{{ launch.launch_site ? launch.launch_site.site_name : 'N/A' }}</td>
-					<td class="details-column">{{ launch.details }}</td>
-					<td class="details-column" @click="favorite.addToFavorites(launch.mission_name)"><v-icon icon="mdi-star" class="icon" /></td>
-				</tr>
-			</tbody>
-		</v-table>
+		<div v-if="launches.length">
+			<v-table>
+				<thead>
+					<tr>
+						<th class="text-left">Mission Name</th>
+						<th class="text-left">Rocket Name</th>
+						<th class="text-left">Launch Date</th>
+						<th class="text-left">Launch Site</th>
+						<th class="text-left details-column">Details</th>
+						<th class="text-left details-column">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="launch in paginatedLaunches" :key="launch.id">
+						<td>{{ launch.mission_name }}</td>
+						<td>{{ launch.rocket.rocket_name }}</td>
+						<td>{{ launch.launch_date_local }}</td>
+						<td>{{ launch.launch_site ? launch.launch_site.site_name : 'N/A' }}</td>
+						<td class="details-column">{{ launch.details }}</td>
+						<td class="details-column" @click="favorite.addToFavorites(launch.mission_name)"><v-icon
+								icon="mdi-star" class="icon" /></td>
+					</tr>
+				</tbody>
+			</v-table>
+
+		</div>
+		<div v-else>
+			Loading data...
+		</div>
+
 		<v-pagination v-model="currentPage" :length="totalPages" />
 	</v-container>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const query = gql`
 query Launches {
   launches {
@@ -75,32 +85,32 @@ const selectedSort = ref('Acending')
 const totalPages = computed(() => Math.ceil(launches.value.length / itemsPerPage.value)); // Total number of pages
 
 const paginatedLaunches = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage.value;
-  const end = start + itemsPerPage.value;
-  return filteredAndSortedLaunches.value.slice(start, end);
+	const start = (currentPage.value - 1) * itemsPerPage.value;
+	const end = start + itemsPerPage.value;
+	return filteredAndSortedLaunches.value.slice(start, end);
 });
 
 let years = computed(() => {
-    let launchYears = launches.value.map((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear())
-    return ['All', ...new Set(launchYears)]
+	let launchYears = launches.value.map((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear())
+	return ['All', ...new Set(launchYears)]
 })
 
 var selectedYear = ref(years.value[0]);
 
 const filteredAndSortedLaunches = computed(() => {
-    var result = launches.value
-    if (selectedYear.value !== 'All') {
-        result = result.filter((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear() === Number(selectedYear.value))
-    }
-    if (selectedSort.value) {
-        result = result.sort((a: { launch_date_local: string | number | Date; }, b: { launch_date_local: string | number | Date; }) => {
-            const dateA = new Date(a.launch_date_local)
-            const dateB = new Date(b.launch_date_local)
-            return selectedSort.value === 'Ascending' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime()
-        })
-    }
-    return result
-})
+  var result = [...launches.value];
+  if (selectedYear.value !== 'All') {
+    result = result.filter((launch: { launch_date_local: string | number | Date; }) => new Date(launch.launch_date_local).getFullYear() === Number(selectedYear.value));
+  }
+  if (selectedSort.value) {
+    result = result.sort((a: { launch_date_local: string | number | Date; }, b: { launch_date_local: string | number | Date; }) => {
+      const dateA = new Date(a.launch_date_local);
+      const dateB = new Date(b.launch_date_local);
+      return selectedSort.value === 'Ascending' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
+    });
+  }
+  return result;
+});
 </script>
 
 <style scoped>
