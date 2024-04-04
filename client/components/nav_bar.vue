@@ -39,13 +39,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 100px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Apply blur */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: add a border */
-    position: sticky; /* Make the navigation bar sticky */
-    top: 0; /* Stick to the top of the viewport */
-    z-index: 1000; /* Ensure the navigation bar is above other elements */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    position: sticky;
+    top: 0; 
+    z-index: 1000; 
 }
 
 .logo {
@@ -76,7 +76,7 @@
 
 .nav-links {
 	display: flex;
-	gap: 20px;
+	gap: 40px;
 }
 
 .logo-text {
@@ -87,6 +87,7 @@
 .icon {
 	font-size: 30px;
 	color: black;
+	margin: 0px;
 }
 
 .nav-link:hover {
