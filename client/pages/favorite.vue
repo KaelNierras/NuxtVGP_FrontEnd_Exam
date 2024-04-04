@@ -33,7 +33,9 @@
 
 <script setup lang="ts">
 
-const favorite = favoriteStore();
+useHead({
+	title: 'NuxtVGP - SpaceX',
+})
 
 const query = gql`
 query Launches {
@@ -67,9 +69,10 @@ const { data } = useAsyncQuery<{
 }>(query)
 
 const launches = computed(() => data.value?.launches ?? [])
+const itemsPerPage = ref(10); 
+const currentPage = ref(1); 
+const favorite = favoriteStore();
 
-const itemsPerPage = ref(10); // Number of items per page
-const currentPage = ref(1); // Current page
 
 const filteredLaunches = computed(() => {
 	var result = [...launches.value];
