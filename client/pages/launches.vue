@@ -27,8 +27,10 @@
 						<td>{{ launch.launch_date_local }}</td>
 						<td>{{ launch.launch_site ? launch.launch_site.site_name : 'N/A' }}</td>
 						<td class="details-column">{{ launch.details }}</td>
-						<td class="details-column" @click="favorite.addToFavorites(launch.mission_name)"><v-icon
-								icon="mdi-star" class="icon" /></td>
+						<td class="details-column" @click="toggleFavorite(launch.mission_name)">
+							<v-icon v-if="isFavorite(launch.mission_name)" icon="mdi-star" class="icon" />
+							<v-icon v-else icon="mdi-star-outline" class="icon" />
+						</td>
 					</tr>
 				</tbody>
 			</v-table>
@@ -99,6 +101,18 @@ let years = computed(() => {
 })
 
 var selectedYear = ref(years.value[0]);
+
+const toggleFavorite = (missionName: string) => {
+  if (isFavorite(missionName)) {
+    favorite.removeFromFavorites(missionName);
+  } else {
+    favorite.addToFavorites(missionName);
+  }
+};
+
+const isFavorite = (missionName: string) => {
+  return favorite.favorites.includes(missionName);
+};
 
 const filteredAndSortedLaunches = computed(() => {
   var result = [...launches.value];
