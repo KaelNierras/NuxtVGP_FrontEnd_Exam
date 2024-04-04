@@ -3,8 +3,11 @@
 		<h3 class="my-5">
 			SpaceX Launches
 		</h3>
-		<v-select v-model="selectedSort" :items="['Ascending', 'Descending']" label="Sort by launch date" />
-		<v-select v-model="selectedYear" :items="years" label="Select a year" />
+		<div class="filters">
+			<v-select v-model="selectedSort" :items="['Ascending', 'Descending']" label="Sort by launch date" />
+			<v-select v-model="selectedYear" :items="years" label="Select a year" />
+		</div>
+		
 		<div v-if="launches.length">
 			<v-table>
 				<thead>
@@ -120,5 +123,11 @@ const filteredAndSortedLaunches = computed(() => {
 
 .icon {
 	cursor: pointer;
+}
+
+.filters{
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
 }
 </style>
