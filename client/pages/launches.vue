@@ -8,7 +8,7 @@
 			<v-select v-model="selectedYear" :items="years" label="Select a year" />
 		</div>
 		
-		<div v-if="launches.length">
+		<div>
 			<v-table>
 				<thead>
 					<tr>
@@ -35,9 +35,6 @@
 				</tbody>
 			</v-table>
 
-		</div>
-		<div v-else>
-			Loading data...
 		</div>
 
 		<v-pagination v-model="currentPage" :length="totalPages" />
