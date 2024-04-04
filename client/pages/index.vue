@@ -13,7 +13,7 @@
 		<div class="card">
 			<v-card>
 				<v-card-text class="large-text bordered-text">
-					Explore the vastness of space with our Space Explorer app. Discover fascinating celestial bodies,
+					Explore the vastness of space with our Space Explorer Site. Discover fascinating celestial bodies,
 					learn
 					about astronomical events, and stay updated with the latest discoveries in the universe.
 				</v-card-text>
