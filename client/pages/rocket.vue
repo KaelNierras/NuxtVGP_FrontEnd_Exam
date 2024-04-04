@@ -34,11 +34,6 @@
 
 <script setup lang="ts">
 
-definePageMeta({
-	middleware: 'middleware_launches',
-})
-
-
 const query = gql`
 query Rockets {
 	rockets {
