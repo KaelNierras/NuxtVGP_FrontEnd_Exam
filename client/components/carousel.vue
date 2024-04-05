@@ -16,7 +16,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   
-  const slides = ref(["https://www.ibm.com/blog/wp-content/uploads/2021/01/leadspace3.jpg", "https://am.pictet/-/media/mega/mega-articles/banners/2022/future-of-space-exploration/stars_istock-1047229538_sitecore_1600x900.jpg", "https://d10lvax23vl53t.cloudfront.net/images/Article_Images/ImageForArticle_2358_16363728816453386.jpg", "https://www.brinknews.com/wp-content/uploads/2023/01/Spacex-1.jpg"]); // Add your slide content here
+const slides = ref(["https://www.ibm.com/blog/wp-content/uploads/2021/01/leadspace3.jpg", "https://am.pictet/-/media/mega/mega-articles/banners/2022/future-of-space-exploration/stars_istock-1047229538_sitecore_1600x900.jpg", "https://d10lvax23vl53t.cloudfront.net/images/Article_Images/ImageForArticle_2358_16363728816453386.jpg", "https://www.brinknews.com/wp-content/uploads/2023/01/Spacex-1.jpg"]); // Add your slide content here
 const currentIndex = ref(0);
 
 const nextSlide = () => {

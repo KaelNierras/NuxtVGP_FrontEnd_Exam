@@ -28,6 +28,12 @@ import Carousel from '../components/carousel.vue';
 
 const text = ref('SpaceX is a private aerospace manufacturer and space transportation company founded by Elon Musk in 2002. The company has developed the Falcon 1, Falcon 9, Falcon Heavy, and Starship rockets, and the Dragon spacecraft.');
 
+// definePageMeta({
+//   middleware: [
+// 	'launches'
+//   ]
+// });
+
 useHead({
 	title: 'NuxtVGP - SpaceX',
 })

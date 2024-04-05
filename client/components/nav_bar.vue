@@ -11,10 +11,10 @@
 		</div>
 		<div class="nav-links">
 			<div class="nav-link">
-				<NuxtLink :to="{ path: '/rocket' }">
+				<NuxtLink :to="{ path: '/rockets' }">
 					<v-icon icon="mdi-rocket" class="icon" />
 				</NuxtLink>
-				<NuxtLink :to="{ path: '/rocket' }" class="link-text">Rockets</NuxtLink>
+				<NuxtLink :to="{ path: '/rockets' }" class="link-text">Rockets</NuxtLink>
 			</div>
 			<div class="nav-link">
 				<NuxtLink :to="{ path: '/launches' }"> <v-icon icon="mdi-rocket-launch"
